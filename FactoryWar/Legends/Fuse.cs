@@ -1,0 +1,42 @@
+﻿using FactoryWar.Entities;
+
+namespace FactoryWar.Legends;
+
+public class Fuse : Assault
+{
+    public Fuse(int health, int tacticalAbility, int ultimateAbility, int damage, int dexterity) : base(health, tacticalAbility, ultimateAbility, damage, dexterity)
+    {
+    }
+
+    public override void MakeAMove(List<Unit> enemyUnits, List<Unit> friendlyUnits)
+    {
+        if (ProbabilityBy(TacticalAbility))
+        {
+            Console.WriteLine($"{nameof(Fuse)} атакует");
+        }
+        else
+        {
+            base.TakeAttack(10);
+        }
+    }
+    public override void TakeAttack(int valueDamage)
+    {
+        base.TakeAttack(valueDamage);
+        Console.WriteLine(Health > 0
+            ? $"{nameof(Fuse)} получил урон, оставшееся здоровье: {Health}/{MaxHealth}"
+            : $"{nameof(Fuse)} получил урон и умер");
+    }
+
+    public override void Attack(Unit unit)
+    {
+        if (ProbabilityBy(UltimateAbility))
+        {
+            Console.WriteLine($"{nameof(Fuse)} атакует");
+            unit.TakeAttack(Damage);
+        }
+        else
+        {
+            Console.WriteLine($"{nameof(Fuse)} промахивается");
+        }
+    }
+}
