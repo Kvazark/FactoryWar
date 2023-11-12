@@ -2,15 +2,14 @@
 
 public abstract class Assault : Unit
 {
-    public int Damage { get; set; }
-    public int Dexterity { get; set; }
+    public int UltimateDamage { get; set; }
 
-    protected Assault(int health, int tacticalAbility, int ultimateAbility, int damage, int dexterity) 
-        : base(health, tacticalAbility,ultimateAbility)
+    protected Assault(int health, int tacticalAbility, int ultimateAbility, int presenceOfWeapons, int damage, int ultimateDamage, int initiative, bool haveBlocking) 
+        : base(health, tacticalAbility,ultimateAbility,presenceOfWeapons, damage, initiative, haveBlocking)
     {
-        Damage = damage;
-        Dexterity = dexterity;
+        UltimateDamage = ultimateDamage;
     }
 
-    public abstract void Attack(Unit unit);
+    public abstract void AdditionalAttack(Unit unit);
+    
 }

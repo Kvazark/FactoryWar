@@ -3,13 +3,11 @@
 public abstract class Support:Unit
 {
     public int Treatment { get; set; }
-    public int Dexterity { get; set; }
 
-    protected Support(int health, int tacticalAbility, int ultimateAbility, int treatment, int dexterity) 
-        : base(health, tacticalAbility,ultimateAbility)
+    protected Support(int health, int tacticalAbility, int ultimateAbility, int presenceOfWeapons, int damage, int treatment, int initiative, bool haveBlocking) 
+        : base(health, tacticalAbility,ultimateAbility, presenceOfWeapons, damage, initiative, haveBlocking)
     {
         Treatment = treatment;
-        Dexterity = dexterity;
     }
 
     public abstract void Heal(Unit unit);
